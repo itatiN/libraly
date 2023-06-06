@@ -3,8 +3,6 @@ import mediapipe as mp
 from keras.models import load_model
 import numpy as np
 
-#tensorFlow versão 2.9.1
-
 cap = cv2.VideoCapture(0)
 
 hands = mp.solutions.hands.Hands(max_num_hands=1)
@@ -46,7 +44,7 @@ while True:
                 data[0] = normalized_image_array
                 prediction = model.predict(data)
                 indexVal = np.argmax(prediction)
-                #print(classes[indexVal])
+                print(classes[indexVal])
                 cv2.putText(img,classes[indexVal],(x_min-50,y_min-65),cv2.FONT_HERSHEY_COMPLEX,3,(0,0,255),5)
 
             except:
