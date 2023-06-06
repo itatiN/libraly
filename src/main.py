@@ -15,15 +15,6 @@ server = StreamingServer(local_ip_address, 9999)
 receiver = AudioReceiver(local_ip_address, 8888)
 
 
-# Hand Capture
-
-cap = cv2.VideoCapture(0)
-hands = mp.solutions.hands.Hands(max_num_hands=1)
-classes = ['A','B','C','D','E']
-model = load_model("src\keras_model.h5")
-data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-
-
 # Functions
 
 def start_listening():
@@ -36,6 +27,11 @@ def start_camera_stream():
     camera_client = CameraClient(text_target_ip.get(1.0,'end-1c'), 7777)
     t3 = threading.Thread(target=camera_client.start_stream)
     t3.start()
+    cap = cv2.VideoCapture(0)
+    hands = mp.solutions.hands.Hands(max_num_hands=1)
+    classes = ['A','B','C','D','E']
+    model = load_model("src\keras_model.h5")
+    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
     while True:
         success, img = cap.read()
         frameRGB = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
