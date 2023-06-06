@@ -21,7 +21,7 @@ def start_camera_stream():
     t3.start()
 
 def start_screen_stream(): 
-    screen_client = ScreenShareClient(text_target_ip.get(1.0,'end-1c'), 7777)
+    screen_client = ScreenShareClient(text_target_ip.get(1.0,'end-1c'), 9999)
     t4 = threading.Thread(target=screen_client.start_stream)
     t4.start()
     

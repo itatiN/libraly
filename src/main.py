@@ -20,7 +20,7 @@ receiver = AudioReceiver(local_ip_address, 8888)
 cap = cv2.VideoCapture(0)
 hands = mp.solutions.hands.Hands(max_num_hands=1)
 classes = ['A','B','C','D','E']
-model = load_model('keras_model.h5')
+model = load_model("src\keras_model.h5")
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 
